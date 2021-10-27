@@ -1,6 +1,9 @@
-<h1>Reading List Homepage</h1>
-<ul>
+{% extends 'base.html' %}
+
+{% block content %}
 	{% for book in all_books_list %}
-		<li>{{ book.title }} by {{ book.author }}</li>
+		<div class="book-entry">
+			<h2><a href="">{{ book.title }} by {{ book.author }}</a></h2>
+		</div>
 	{% endfor %}
-</ul>
+{% endblock content %}
