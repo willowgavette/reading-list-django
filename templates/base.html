@@ -1,13 +1,21 @@
+{% load static %}
 <html>
 <head>
 	<title>Reading List</title>
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=\
+	Source+Sans+Pro:400" rel="stylesheet">
+	<link href="{% static 'css/base.css' %}" rel="stylesheet">
 </head>
 <body>
-	<header>
-		<h1><a href="{% url 'home' %}">Reading List</a></h1>
-	</header>
 	<div>
+		<header>
+			<div class="nav-left">
+				<h1><a href="{% url 'home' %}">Reading List</a></h1>
+			</div>
+			<div class="nav-right">
+				<a href="{% url 'book_new' %}">+ New Book Entry</a>
+			</div>
+		</header>
 		{% block content %}
 		{% endblock content %}
 	</div>
