@@ -25,7 +25,7 @@ class SingleBookView(LoginRequiredMixin, DetailView):
 class BookEnterView(LoginRequiredMixin, CreateView):
 	model = Book
 	template_name = 'book_entry.html'
-	fields = ('title', 'author')
+	fields = ['title', 'author', 'year', 'isbn', 'completed']
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
