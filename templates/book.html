@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div class="book-entry">
-		<h2>{{ book.title }}</h2>
-		<p>Written by {{ book.author }}</p>
-		<p>Published in {{ book.year }}</p>
-		<p>ISBN: {{ book.isbn }}</p>
-		{% if book.status %}
-			<p>You have completed this book.</p>
-		{% else %}
-			<p>You have not completed this book.</p>
-		{% endif %}
-	</div>
+<div class="book-entry">
+	<h2>{{ book.title }}</h2>
+	<p>Written by {{ book.book_author }}</p>
+	<p>Published in {{ book.year }}</p>
+	<p>ISBN: {{ book.isbn }}</p>
+	{% if book.status %}
+	<p>You have completed this book.</p>
+	{% else %}
+	<p>You have not completed this book.</p>
+	{% endif %}
+</div>
 
-	<p><a href="{% url 'book_edit' book.pk %}">+ Edit Book</a></p>
-	<p><a href="{% url 'book_delete' book.pk %}">+ Delete Book</a></p>
+<p><a href="{% url 'book_edit' book.pk %}">+ Edit Book</a></p>
+<p><a href="{% url 'book_delete' book.pk %}">+ Delete Book</a></p>
 {% endblock content %}

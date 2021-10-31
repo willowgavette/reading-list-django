@@ -25,7 +25,7 @@ class SingleBookView(LoginRequiredMixin, DetailView):
 class BookEnterView(LoginRequiredMixin, CreateView):
 	model = Book
 	template_name = 'book_entry.html'
-	fields = ['title', 'author', 'year', 'isbn', 'completed']
+	fields = ['title', 'book_author', 'year', 'isbn', 'completed']
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
@@ -34,7 +34,7 @@ class BookEnterView(LoginRequiredMixin, CreateView):
 class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Book
 	template_name = 'book_edit.html'
-	fields = ('title', 'author')
+	fields = ['title', 'book_author', 'year', 'isbn', 'completed']
 
 	def test_func(self):
 		obj = self.get_object()
