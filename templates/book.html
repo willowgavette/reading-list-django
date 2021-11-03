@@ -6,7 +6,7 @@
 	<p>Written by {{ book.book_author }}</p>
 	<p>Published in {{ book.year }}</p>
 	<p>ISBN: {{ book.isbn }}</p>
-	{% if book.status %}
+	{% if book.completed %}
 	<p>You have completed this book.</p>
 	{% else %}
 	<p>You have not completed this book.</p>
