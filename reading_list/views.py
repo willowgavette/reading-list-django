@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import (
 	LoginRequiredMixin,
-	UserPassesTestMixin
 )
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
@@ -31,20 +30,12 @@ class BookEnterView(LoginRequiredMixin, CreateView):
 		form.instance.author = self.request.user
 		return super().form_valid(form)
 
-class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
 	model = Book
 	template_name = 'book_edit.html'
 	fields = ['title', 'book_author', 'year', 'isbn', 'completed']
 
-	def test_func(self):
-		obj = self.get_object()
-		return obj.author == self.request.user
-
-class BookDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class BookDeleteView(LoginRequiredMixin, DeleteView):
 	model = Book
 	template_name = 'book_delete.html'
 	success_url = reverse_lazy('home')
-
-	def test_func(self):
-		obj = self.get_object()
-		return obj.author == self.request.user
